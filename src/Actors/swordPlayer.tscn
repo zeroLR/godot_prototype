@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=61 format=2]
 
 [sub_resource type="StreamTexture" id=1]
 load_path = "res://.import/PrototypeHero.png-bb1fd69fd7866af22bb55937c408fdf3.stex"
@@ -547,6 +547,101 @@ tracks/0/keys = {
 
 [sub_resource type="CapsuleShape2D" id=2]
 
+[sub_resource type="AnimationNodeAnimation" id=35]
+animation = "Fall"
+
+[sub_resource type="AnimationNodeAnimation" id=36]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=37]
+animation = "Jump"
+
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "JumpToFall"
+
+[sub_resource type="AnimationNodeAnimation" id=39]
+animation = "Landing"
+
+[sub_resource type="AnimationNodeAnimation" id=40]
+animation = "Run"
+
+[sub_resource type="AnimationNodeAnimation" id=41]
+animation = "RunStart"
+
+[sub_resource type="AnimationNodeAnimation" id=42]
+animation = "RunStop"
+
+[sub_resource type="AnimationNodeAnimation" id=43]
+animation = "Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=44]
+xfade_time = 0.15
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=45]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=46]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=47]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=48]
+switch_mode = 2
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=49]
+switch_mode = 2
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=50]
+xfade_time = 0.15
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=52]
+xfade_time = 0.15
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=53]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=54]
+xfade_time = 0.15
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=55]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=56]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=57]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+
+[sub_resource type="AnimationNodeStateMachine" id=59]
+states/Fall/node = SubResource( 35 )
+states/Fall/position = Vector2( 158.075, 36.625 )
+states/Idle/node = SubResource( 36 )
+states/Idle/position = Vector2( 344.812, 116.547 )
+states/Jump/node = SubResource( 37 )
+states/Jump/position = Vector2( 158.003, -129.875 )
+states/JumpToFall/node = SubResource( 38 )
+states/JumpToFall/position = Vector2( 158.362, -51.375 )
+states/Landing/node = SubResource( 39 )
+states/Landing/position = Vector2( 158.219, 116.555 )
+states/Run/node = SubResource( 40 )
+states/Run/position = Vector2( 344.75, 219.438 )
+states/RunStart/node = SubResource( 41 )
+states/RunStart/position = Vector2( 157.931, 219.43 )
+states/RunStop/node = SubResource( 42 )
+states/RunStop/position = Vector2( 528.5, 219.406 )
+states/Walk/node = SubResource( 43 )
+states/Walk/position = Vector2( 529.55, 115.812 )
+transitions = [ "Idle", "RunStart", SubResource( 44 ), "Idle", "Walk", SubResource( 45 ), "Walk", "Idle", SubResource( 46 ), "RunStart", "Idle", SubResource( 47 ), "RunStart", "Run", SubResource( 48 ), "Run", "RunStop", SubResource( 49 ), "RunStop", "Idle", SubResource( 50 ), "RunStop", "Walk", SubResource( 52 ), "Landing", "Run", SubResource( 53 ), "Landing", "Idle", SubResource( 54 ), "JumpToFall", "Fall", SubResource( 55 ), "Fall", "Landing", SubResource( 56 ), "Jump", "JumpToFall", SubResource( 57 ), "Idle", "JumpToFall", SubResource( 58 ) ]
+graph_offset = Vector2( -91.3499, -187.028 )
+
+[sub_resource type="AnimationNodeBlendTree" id=60]
+graph_offset = Vector2( -139.58, -32.3931 )
+nodes/StateMachine/node = SubResource( 59 )
+nodes/StateMachine/position = Vector2( 350, 120 )
+nodes/output/position = Vector2( 620, 140 )
+node_connections = [ "output", 0, "StateMachine" ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=61]
+
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 30
 __meta__ = {
@@ -597,3 +692,9 @@ anims/WallSlide = SubResource( 34 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 60 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/StateMachine/playback = SubResource( 61 )

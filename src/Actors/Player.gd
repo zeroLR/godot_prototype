@@ -1,7 +1,6 @@
 class_name Player
 extends Actor
 
-
 # warning-ignore:unused_signal
 signal collect_coin()
 
