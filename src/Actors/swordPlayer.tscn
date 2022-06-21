@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=86 format=2]
 
 [sub_resource type="StreamTexture" id=1]
 load_path = "res://.import/PrototypeHero.png-bb1fd69fd7866af22bb55937c408fdf3.stex"
@@ -153,7 +153,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 76, 77, 78, 79, 80, 81 ]
+"values": [ 76, 77, 78, 79, 79, 79 ]
 }
 
 [sub_resource type="Animation" id=20]
@@ -547,8 +547,44 @@ tracks/0/keys = {
 
 [sub_resource type="CapsuleShape2D" id=2]
 
+[sub_resource type="AnimationNodeAnimation" id=84]
+animation = "AirAttack"
+
+[sub_resource type="AnimationNodeAnimation" id=85]
+animation = "AirAttackUp"
+
+[sub_resource type="AnimationNodeAnimation" id=63]
+animation = "Attack1"
+
+[sub_resource type="AnimationNodeAnimation" id=64]
+animation = "Attack1Hold"
+
+[sub_resource type="AnimationNodeAnimation" id=65]
+animation = "Attack2"
+
+[sub_resource type="AnimationNodeAnimation" id=66]
+animation = "Attack2Hold"
+
+[sub_resource type="AnimationNodeAnimation" id=86]
+animation = "AttackAirLanding"
+
+[sub_resource type="AnimationNodeAnimation" id=87]
+animation = "AttackAirSlam"
+
+[sub_resource type="AnimationNodeAnimation" id=88]
+animation = "AttackUp"
+
+[sub_resource type="AnimationNodeAnimation" id=89]
+animation = "AttackUpHold"
+
+[sub_resource type="AnimationNodeAnimation" id=67]
+animation = "Death"
+
 [sub_resource type="AnimationNodeAnimation" id=35]
 animation = "Fall"
+
+[sub_resource type="AnimationNodeAnimation" id=62]
+animation = "Hurt"
 
 [sub_resource type="AnimationNodeAnimation" id=36]
 animation = "Idle"
@@ -571,6 +607,9 @@ animation = "RunStart"
 [sub_resource type="AnimationNodeAnimation" id=42]
 animation = "RunStop"
 
+[sub_resource type="AnimationNodeAnimation" id=71]
+animation = "SheathSword"
+
 [sub_resource type="AnimationNodeAnimation" id=43]
 animation = "Walk"
 
@@ -592,18 +631,19 @@ switch_mode = 2
 xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=50]
+auto_advance = true
 xfade_time = 0.15
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=52]
 xfade_time = 0.15
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=53]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=54]
+auto_advance = true
 xfade_time = 0.15
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=55]
 switch_mode = 2
+xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=56]
 
@@ -611,27 +651,104 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=58]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=68]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=70]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.25
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=72]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=75]
+auto_advance = true
+xfade_time = 0.15
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=76]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=77]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=79]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=80]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=83]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=92]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=94]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=97]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=93]
+switch_mode = 2
+auto_advance = true
+xfade_time = 0.1
+
 [sub_resource type="AnimationNodeStateMachine" id=59]
+states/AirAttack/node = SubResource( 84 )
+states/AirAttack/position = Vector2( -72.4301, 289.267 )
+states/AirAttackUp/node = SubResource( 85 )
+states/AirAttackUp/position = Vector2( 51.0699, 324.767 )
+states/Attack1/node = SubResource( 63 )
+states/Attack1/position = Vector2( 513.409, -18.9295 )
+states/Attack1Hold/node = SubResource( 64 )
+states/Attack1Hold/position = Vector2( 855.699, -6.38729 )
+states/Attack2/node = SubResource( 65 )
+states/Attack2/position = Vector2( 511.803, -117.139 )
+states/Attack2Hold/node = SubResource( 66 )
+states/Attack2Hold/position = Vector2( 818.316, -129.767 )
+states/AttackAirLanding/node = SubResource( 86 )
+states/AttackAirLanding/position = Vector2( -122.93, 343.267 )
+states/AttackAirSlam/node = SubResource( 87 )
+states/AttackAirSlam/position = Vector2( -146.93, 414.267 )
+states/AttackUp/node = SubResource( 88 )
+states/AttackUp/position = Vector2( 514.164, -213.26 )
+states/AttackUpHold/node = SubResource( 89 )
+states/AttackUpHold/position = Vector2( 823.875, -213.085 )
+states/Death/node = SubResource( 67 )
+states/Death/position = Vector2( 0.800018, 205.532 )
 states/Fall/node = SubResource( 35 )
 states/Fall/position = Vector2( 158.075, 36.625 )
+states/Hurt/node = SubResource( 62 )
+states/Hurt/position = Vector2( 183.039, 219.526 )
 states/Idle/node = SubResource( 36 )
 states/Idle/position = Vector2( 344.812, 116.547 )
 states/Jump/node = SubResource( 37 )
 states/Jump/position = Vector2( 158.003, -129.875 )
 states/JumpToFall/node = SubResource( 38 )
-states/JumpToFall/position = Vector2( 158.362, -51.375 )
+states/JumpToFall/position = Vector2( 158.147, -55.375 )
 states/Landing/node = SubResource( 39 )
-states/Landing/position = Vector2( 158.219, 116.555 )
+states/Landing/position = Vector2( 158.219, 116.547 )
 states/Run/node = SubResource( 40 )
-states/Run/position = Vector2( 344.75, 219.438 )
+states/Run/position = Vector2( 495.75, 219.058 )
 states/RunStart/node = SubResource( 41 )
-states/RunStart/position = Vector2( 157.931, 219.43 )
+states/RunStart/position = Vector2( 343.842, 219.995 )
 states/RunStop/node = SubResource( 42 )
-states/RunStop/position = Vector2( 528.5, 219.406 )
+states/RunStop/position = Vector2( 661, 219.175 )
+states/SheathSword/node = SubResource( 71 )
+states/SheathSword/position = Vector2( 676.5, 55.6905 )
 states/Walk/node = SubResource( 43 )
-states/Walk/position = Vector2( 529.55, 115.812 )
-transitions = [ "Idle", "RunStart", SubResource( 44 ), "Idle", "Walk", SubResource( 45 ), "Walk", "Idle", SubResource( 46 ), "RunStart", "Idle", SubResource( 47 ), "RunStart", "Run", SubResource( 48 ), "Run", "RunStop", SubResource( 49 ), "RunStop", "Idle", SubResource( 50 ), "RunStop", "Walk", SubResource( 52 ), "Landing", "Run", SubResource( 53 ), "Landing", "Idle", SubResource( 54 ), "JumpToFall", "Fall", SubResource( 55 ), "Fall", "Landing", SubResource( 56 ), "Jump", "JumpToFall", SubResource( 57 ), "Idle", "JumpToFall", SubResource( 58 ) ]
-graph_offset = Vector2( -91.3499, -187.028 )
+states/Walk/position = Vector2( 648.55, 116.548 )
+transitions = [ "Idle", "RunStart", SubResource( 44 ), "Idle", "Walk", SubResource( 45 ), "Walk", "Idle", SubResource( 46 ), "RunStart", "Idle", SubResource( 47 ), "RunStart", "Run", SubResource( 48 ), "Run", "RunStop", SubResource( 49 ), "RunStop", "Idle", SubResource( 50 ), "RunStop", "Walk", SubResource( 52 ), "Landing", "Idle", SubResource( 54 ), "JumpToFall", "Fall", SubResource( 55 ), "Fall", "Landing", SubResource( 56 ), "Jump", "JumpToFall", SubResource( 57 ), "Idle", "JumpToFall", SubResource( 58 ), "Idle", "Hurt", SubResource( 68 ), "Hurt", "Idle", SubResource( 70 ), "Idle", "Attack1", SubResource( 72 ), "SheathSword", "Idle", SubResource( 75 ), "Attack2", "Attack2Hold", SubResource( 76 ), "Attack2Hold", "SheathSword", SubResource( 77 ), "Attack1", "Attack1Hold", SubResource( 79 ), "Attack1Hold", "SheathSword", SubResource( 80 ), "Idle", "Death", SubResource( 83 ), "AttackUp", "AttackUpHold", SubResource( 92 ), "Attack1Hold", "Attack2", SubResource( 94 ), "Attack2Hold", "AttackUp", SubResource( 97 ), "AttackUpHold", "SheathSword", SubResource( 93 ) ]
+start_node = "Idle"
+end_node = "Death"
+graph_offset = Vector2( -293.347, 177.502 )
 
 [sub_resource type="AnimationNodeBlendTree" id=60]
 graph_offset = Vector2( -139.58, -32.3931 )
