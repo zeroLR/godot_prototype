@@ -2,7 +2,7 @@ class_name Player
 extends Actor
 
 # warning-ignore:unused_signal
-signal collect_coin()
+signal collect_coin
 
 const FLOOR_DETECT_DISTANCE = 20.0
 
@@ -43,6 +43,7 @@ func _ready():
 # 5. Shoots bullets.
 # 6. Updates the animation.
 
+
 # Splitting the physics process logic into functions not only makes it
 # easier to read, it help to change or improve the code later on:
 # - If you need to change a calculation, you can use Go To -> Function
@@ -56,7 +57,10 @@ func _physics_process(_delta):
 
 	var direction = get_direction()
 
-	var is_jump_interrupted = Input.is_action_just_released("jump" + action_suffix) and _velocity.y < 0.0
+	var is_jump_interrupted = (
+		Input.is_action_just_released("jump" + action_suffix)
+		and _velocity.y < 0.0
+	)
 	_velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
 
 	var snap_vector = Vector2.ZERO
@@ -92,19 +96,17 @@ func _physics_process(_delta):
 
 func get_direction():
 	return Vector2(
-		Input.get_action_strength("move_right" + action_suffix) - Input.get_action_strength("move_left" + action_suffix),
+		(
+			Input.get_action_strength("move_right" + action_suffix)
+			- Input.get_action_strength("move_left" + action_suffix)
+		),
 		-1 if is_on_floor() and Input.is_action_just_pressed("jump" + action_suffix) else 0
 	)
 
 
 # This function calculates a new velocity whenever you need it.
 # It allows you to interrupt jumps.
-func calculate_move_velocity(
-		linear_velocity,
-		direction,
-		speed,
-		is_jump_interrupted
-	):
+func calculate_move_velocity(linear_velocity, direction, speed, is_jump_interrupted):
 	var velocity = linear_velocity
 	velocity.x = speed.x * direction.x
 	if direction.y != 0.0:
@@ -117,6 +119,7 @@ func calculate_move_velocity(
 
 
 func get_new_animation(is_shooting = false):
+	print(_velocity.x)
 	var animation_new = ""
 	if is_on_floor():
 		if abs(_velocity.x) > 0.1:
