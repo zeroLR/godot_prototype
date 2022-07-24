@@ -9,6 +9,7 @@ const FLOOR_DETECT_DISTANCE = 20.0
 var state_machine
 var run_speed = 80
 var velocity = Vector2.ZERO
+var is_attacking = false
 
 onready var platform_detector = $PlatformDetector
 onready var animation_player = $AnimationPlayer
@@ -25,7 +26,9 @@ func _ready():
 
 
 func _physics_process(_delta):
+	var cur_node = ""
 	state_machine = $AnimationTree.get("parameters/StateMachine/playback")
+	cur_node = state_machine.get_current_node()
 	# Play jump sound
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		sound_jump.play()
@@ -33,7 +36,10 @@ func _physics_process(_delta):
 	var direction = get_direction()
 
 	var is_jump_interrupted = Input.is_action_just_released("jump") and _velocity.y < 0.0
-	_velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
+	var is_attack_ground_interrupted = Input.is_action_just_pressed("attack") and is_on_floor()
+	_velocity = calculate_move_velocity(
+		_velocity, direction, speed, is_jump_interrupted, is_attack_ground_interrupted
+	)
 
 	var snap_vector = Vector2.ZERO
 	if direction.y == 0.0:
@@ -48,7 +54,16 @@ func _physics_process(_delta):
 			sprite.scale.x = 1
 		else:
 			sprite.scale.x = -1
-	var animation = get_input()
+
+	var animation = get_input(is_attack_ground_interrupted)
+
+	# start attack
+	if is_attack_ground_interrupted:
+		is_attacking = true
+	if cur_node == "Idle":
+		is_attacking = false
+	if (cur_node == "Attack1Hold" || cur_node == "SheathSword") && direction.x != 0:
+		state_machine.start("Run")
 
 
 func get_direction():
@@ -58,19 +73,26 @@ func get_direction():
 	)
 
 
-func calculate_move_velocity(linear_velocity, direction, speed, is_jump_interrupted):
+func calculate_move_velocity(
+	linear_velocity, direction, speed, is_jump_interrupted, is_attack_ground_interrupted
+):
 	var velocity = linear_velocity
 	velocity.x = speed.x * direction.x
 	if direction.y != 0.0:
 		velocity.y = speed.y * direction.y
 	if is_jump_interrupted:
 		velocity.y *= 0.6
+	if is_attacking:
+		velocity.x = 0
 	return velocity
 
 
-func get_input():
-	print(_velocity)
-	print(is_on_floor())
+func get_input(is_attacking = false):
+	# print(state_machine.get_current_node())
+	# print(_velocity.y)
+	if is_attacking:
+		state_machine.start("Attack1")
+		return
 	if is_on_floor():
 		if abs(_velocity.x) > 0.1:
 			state_machine.travel("Run")

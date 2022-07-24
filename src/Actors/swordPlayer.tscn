@@ -45,8 +45,9 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=10]
 resource_name = "Attack1"
-length = 0.6
+length = 0.3
 loop = true
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 2
@@ -54,7 +55,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"times": PoolRealArray( 0, 0.04, 0.08, 0.16, 0.2, 0.24 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 96, 24, 25, 26, 26, 26 ]
@@ -62,8 +63,9 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=12]
 resource_name = "Attack1Hold"
-length = 0.6
+length = 0.15
 loop = true
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 2
@@ -71,7 +73,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.4, 0.5 ),
+"times": PoolRealArray( 0, 0.06, 0.1, 0.1375 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 26, 26, 27, 28 ]
@@ -79,8 +81,9 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=13]
 resource_name = "Attack2"
-length = 0.6
+length = 0.3
 loop = true
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 2
@@ -88,7 +91,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"times": PoolRealArray( 0, 0.04, 0.08, 0.16, 0.2, 0.24 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 97, 29, 30, 31, 31, 31 ]
@@ -96,8 +99,9 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=14]
 resource_name = "Attack2Hold"
-length = 0.6
+length = 0.15
 loop = true
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 2
@@ -105,7 +109,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.4, 0.5 ),
+"times": PoolRealArray( 0, 0.06, 0.1, 0.1375 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 31, 31, 32, 33 ]
@@ -164,8 +168,9 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=19]
 resource_name = "AttackUp"
-length = 0.6
+length = 0.3
 loop = true
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 2
@@ -173,7 +178,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"times": PoolRealArray( 0, 0.04, 0.08, 0.16, 0.2, 0.24 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 76, 77, 78, 79, 79, 79 ]
@@ -181,8 +186,9 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=20]
 resource_name = "AttackUpHold"
-length = 0.6
+length = 0.15
 loop = true
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 2
@@ -190,7 +196,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.4, 0.5 ),
+"times": PoolRealArray( 0, 0.06, 0.1, 0.1375 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 79, 79, 80, 81 ]
@@ -711,7 +717,7 @@ xfade_time = 0.1
 [sub_resource type="AnimationNodeStateMachineTransition" id=79]
 switch_mode = 2
 auto_advance = true
-xfade_time = 0.1
+xfade_time = 0.15
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=80]
 switch_mode = 2
@@ -774,7 +780,7 @@ states/AirAttackUp/position = Vector2( -328.93, 0.267303 )
 states/Attack1/node = SubResource( 63 )
 states/Attack1/position = Vector2( 513.409, -18.9295 )
 states/Attack1Hold/node = SubResource( 64 )
-states/Attack1Hold/position = Vector2( 855.699, -6.38729 )
+states/Attack1Hold/position = Vector2( 855.699, -6.88729 )
 states/Attack2/node = SubResource( 65 )
 states/Attack2/position = Vector2( 512.356, -117.139 )
 states/Attack2Hold/node = SubResource( 66 )
@@ -788,7 +794,7 @@ states/AttackAirSlam/position = Vector2( 344.085, -183.321 )
 states/AttackUp/node = SubResource( 88 )
 states/AttackUp/position = Vector2( 514.164, -213.26 )
 states/AttackUpHold/node = SubResource( 89 )
-states/AttackUpHold/position = Vector2( 823.875, -213.085 )
+states/AttackUpHold/position = Vector2( 823.875, -213.216 )
 states/Crouch/node = SubResource( 106 )
 states/Crouch/position = Vector2( 15.1433, -129.474 )
 states/Death/node = SubResource( 67 )
@@ -828,13 +834,13 @@ states/Walk/position = Vector2( 648.55, 116.548 )
 transitions = [ "Idle", "RunStart", SubResource( 44 ), "Idle", "Walk", SubResource( 45 ), "Walk", "Idle", SubResource( 46 ), "RunStart", "Idle", SubResource( 47 ), "RunStart", "Run", SubResource( 48 ), "RunStop", "Idle", SubResource( 50 ), "RunStop", "Walk", SubResource( 52 ), "Landing", "Idle", SubResource( 54 ), "JumpToFall", "Fall", SubResource( 55 ), "Jump", "JumpToFall", SubResource( 57 ), "Idle", "JumpToFall", SubResource( 58 ), "Idle", "Hurt", SubResource( 68 ), "Hurt", "Idle", SubResource( 70 ), "Idle", "Attack1", SubResource( 72 ), "SheathSword", "Idle", SubResource( 75 ), "Attack2", "Attack2Hold", SubResource( 76 ), "Attack2Hold", "SheathSword", SubResource( 77 ), "Attack1", "Attack1Hold", SubResource( 79 ), "Attack1Hold", "SheathSword", SubResource( 80 ), "Idle", "Death", SubResource( 83 ), "AttackUp", "AttackUpHold", SubResource( 92 ), "Attack1Hold", "Attack2", SubResource( 94 ), "Attack2Hold", "AttackUp", SubResource( 97 ), "AttackUpHold", "SheathSword", SubResource( 93 ), "AttackAirSlam", "AttackAirHold", SubResource( 103 ), "AttackAirHold", "AttackAirLanding", SubResource( 104 ), "AttackAirLanding", "SheathSword", SubResource( 105 ), "Crouch", "StandUp", SubResource( 112 ), "StandUp", "Idle", SubResource( 113 ), "Idle", "Crouch", SubResource( 114 ), "Fall", "Idle", SubResource( 115 ), "Run", "Idle", SubResource( 116 ), "JumpToFall", "Idle", SubResource( 117 ), "Jump", "Idle", SubResource( 118 ) ]
 start_node = "Idle"
 end_node = "Death"
-graph_offset = Vector2( -31.589, -79.5675 )
+graph_offset = Vector2( 62.9251, 15.9975 )
 
 [sub_resource type="AnimationNodeBlendTree" id=60]
-graph_offset = Vector2( 120.87, 184.489 )
+graph_offset = Vector2( -73.7325, 32.1687 )
 nodes/StateMachine/node = SubResource( 59 )
-nodes/StateMachine/position = Vector2( 350, 160 )
-nodes/output/position = Vector2( 620, 140 )
+nodes/StateMachine/position = Vector2( 20, 100 )
+nodes/output/position = Vector2( 400, 100 )
 node_connections = [ "output", 0, "StateMachine" ]
 
 [node name="Player" type="KinematicBody2D"]
